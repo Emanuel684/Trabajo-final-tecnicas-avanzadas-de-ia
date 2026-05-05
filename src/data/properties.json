@@ -1,0 +1,74 @@
+[
+  {
+    "id": "P-101",
+    "zone": "Laureles",
+    "price_cop": 340000000,
+    "area_m2": 78,
+    "property_type": "apartamento",
+    "amenities": ["parqueadero", "ascensor", "balcon"]
+  },
+  {
+    "id": "P-102",
+    "zone": "Laureles",
+    "price_cop": 310000000,
+    "area_m2": 72,
+    "property_type": "apartamento",
+    "amenities": ["parqueadero", "ascensor"]
+  },
+  {
+    "id": "P-201",
+    "zone": "Belen",
+    "price_cop": 275000000,
+    "area_m2": 68,
+    "property_type": "apartamento",
+    "amenities": ["parqueadero"]
+  },
+  {
+    "id": "P-202",
+    "zone": "Belen",
+    "price_cop": 295000000,
+    "area_m2": 75,
+    "property_type": "apartamento",
+    "amenities": ["parqueadero", "ascensor"]
+  },
+  {
+    "id": "P-301",
+    "zone": "Envigado",
+    "price_cop": 360000000,
+    "area_m2": 82,
+    "property_type": "apartamento",
+    "amenities": ["parqueadero", "ascensor", "balcon"]
+  },
+  {
+    "id": "P-302",
+    "zone": "Envigado",
+    "price_cop": 330000000,
+    "area_m2": 74,
+    "property_type": "apartamento",
+    "amenities": ["parqueadero", "ascensor"]
+  },
+  {
+    "id": "P-401",
+    "zone": "Sabaneta",
+    "price_cop": 255000000,
+    "area_m2": 66,
+    "property_type": "apartamento",
+    "amenities": ["parqueadero"]
+  },
+  {
+    "id": "P-402",
+    "zone": "Sabaneta",
+    "price_cop": 285000000,
+    "area_m2": 71,
+    "property_type": "apartamento",
+    "amenities": ["parqueadero", "ascensor"]
+  },
+  {
+    "id": "P-501",
+    "zone": "Centro",
+    "price_cop": 220000000,
+    "area_m2": 60,
+    "property_type": "apartamento",
+    "amenities": ["ascensor"]
+  }
+]

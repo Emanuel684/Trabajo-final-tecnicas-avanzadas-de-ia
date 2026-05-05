@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Laureles",
+    "safety_index": 0.79,
+    "transport_score": 0.82,
+    "services_score": 0.86
+  },
+  {
+    "name": "Belen",
+    "safety_index": 0.73,
+    "transport_score": 0.76,
+    "services_score": 0.78
+  },
+  {
+    "name": "Envigado",
+    "safety_index": 0.84,
+    "transport_score": 0.74,
+    "services_score": 0.81
+  },
+  {
+    "name": "Sabaneta",
+    "safety_index": 0.77,
+    "transport_score": 0.71,
+    "services_score": 0.75
+  },
+  {
+    "name": "Centro",
+    "safety_index": 0.58,
+    "transport_score": 0.9,
+    "services_score": 0.88
+  }
+]

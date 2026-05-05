@@ -1,0 +1,27 @@
+[
+  {
+    "zone": "Laureles",
+    "urban_context_score": 0.83,
+    "headline": "Mejora en red de ciclorrutas y espacio publico."
+  },
+  {
+    "zone": "Belen",
+    "urban_context_score": 0.72,
+    "headline": "Intervenciones viales con impacto temporal en movilidad."
+  },
+  {
+    "zone": "Envigado",
+    "urban_context_score": 0.85,
+    "headline": "Nuevos proyectos de equipamiento urbano y seguridad."
+  },
+  {
+    "zone": "Sabaneta",
+    "urban_context_score": 0.76,
+    "headline": "Crecimiento de oferta comercial y de servicios."
+  },
+  {
+    "zone": "Centro",
+    "urban_context_score": 0.57,
+    "headline": "Alta densidad y presion de movilidad en horas pico."
+  }
+]
