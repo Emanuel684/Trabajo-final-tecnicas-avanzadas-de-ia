@@ -1,22 +1,22 @@
 # Reflexion critica
 
-## Fortalezas del enfoque
+## Fortalezas
 
-- **Interpretabilidad**: cada etapa tiene una funcion clara y resultados auditables.
-- **Control del flujo**: transiciones condicionales explicitas en lugar de decisiones opacas.
-- **Resiliencia**: la relajacion progresiva evita fallos tempranos por restricciones muy estrictas.
-- **Escalabilidad conceptual**: permite agregar nuevas actividades (riesgo, colegios, movilidad) sin redisenar todo.
+- El grafo hace explicito el flujo de decision y evita un agente unico opaco.
+- Los agentes tienen responsabilidades limitadas, por lo que sus salidas son mas faciles de inspeccionar.
+- La relajacion progresiva conserva trazabilidad y evita cambiar varias restricciones a la vez.
+- El sistema puede ejecutarse sin servicios externos, lo que facilita la demostracion academica.
 
-## Riesgos y limitaciones
+## Limitaciones
 
-- **Calidad de datos**: la recomendacion depende fuertemente de la actualidad de oferta y senales externas.
-- **Sesgos de score**: ponderaciones mal calibradas pueden favorecer zonas o tipos de inmueble de forma injusta.
-- **Heuristicas fijas**: la relajacion actual es deterministica y puede no adaptarse a todos los perfiles.
-- **Cobertura de contexto urbano**: el ejemplo usa senales simuladas y no integra fuentes en tiempo real.
+- Los datos de propiedades, zonas y senales externas son simulados.
+- El parser heuristico puede no capturar expresiones complejas del usuario.
+- Las ponderaciones del score son reglas de negocio iniciales, no parametros aprendidos.
+- El uso de LLM queda limitado a la interpretacion de requisitos para mantener control sobre el flujo.
 
 ## Mejoras futuras
 
-- Aprendizaje de preferencias implicitas a partir de feedback del usuario.
-- Integracion con APIs reales de portales inmobiliarios y datos de ciudad.
-- Ajuste dinamico de pesos del score por segmento de familia.
-- Validacion con metricas offline y evaluacion humana de utilidad percibida.
+- Integrar portales inmobiliarios o APIs urbanas reales.
+- Incorporar feedback del usuario para ajustar pesos del score.
+- Agregar validacion contra sesgos por zona o presupuesto.
+- Guardar ejecuciones historicas para comparar decisiones entre iteraciones.

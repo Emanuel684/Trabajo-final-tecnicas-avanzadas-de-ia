@@ -1,1 +1,1 @@
-"""Core package for the housing recommender system."""
+"""Sistema multiagente de recomendacion de vivienda."""

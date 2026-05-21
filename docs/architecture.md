@@ -1,31 +1,19 @@
 # Arquitectura del sistema
 
-## Enfoque general
+## Enfoque
 
-El sistema se implementa como un **proceso multi-etapa** sobre un grafo de decision con LangGraph. Cada actividad es un nodo funcional con responsabilidades acotadas y salidas trazables, lo que evita el patron de agente unico opaco.
+El sistema usa LangGraph como controlador principal. Cada agente participa en una etapa acotada y el grafo decide las transiciones, los reintentos y la terminacion.
 
 ## Componentes
 
-- **Estado compartido (`RecommendationState`)**: concentra entradas, resultados intermedios, historico, relajacion y salida final.
-- **Capa de actividades (`src/activities/core.py`)**: interpreta requerimientos, analiza zonas, integra contexto externo, consulta ofertas, filtra y calcula score.
-- **Politica de relajacion (`src/relaxation.py`)**: aplica cambios graduales cuando no hay resultados suficientes.
-- **Evaluador final (`src/evaluator.py`)**: determina si la solucion es aceptable o si requiere nueva iteracion.
-- **Orquestador (`src/graph.py`)**: define nodos, transiciones condicionales y loops.
+- `RecommendationState`: conserva criterios originales, criterios actuales, resultados intermedios, trazas, diagnosticos, relajaciones y recomendaciones.
+- `requirements_agent`: convierte texto libre en criterios estructurados. Puede usar LLM si hay `OPENAI_API_KEY`; si no, usa heuristicas.
+- `zone_agent`: identifica y evalua zonas candidatas con datos locales.
+- `signals_agent`: agrega contexto urbano simulado por zona.
+- `property_agent`: consulta ofertas locales, filtra restricciones y calcula scores.
+- `evaluation_agent`: valida suficiencia, diagnostica fallos, aplica relajacion progresiva y genera explicaciones.
+- `housing_tools`: centraliza operaciones deterministicas para que los agentes sean auditables.
 
-## Decisiones de diseño
+## Trazabilidad
 
-1. **Interpretabilidad**: cada nodo deja rastros en `decision_history`.
-2. **Control de incertidumbre**: si no hay soluciones, se activa `diagnose_failure` y luego `relax_constraints`.
-3. **Convergencia garantizada**: el proceso tiene `max_iterations` y termina incluso si no alcanza aceptacion.
-4. **Trazabilidad**: cada relajacion queda en `relaxation_log` con antes/despues y razon.
-
-## Flujo de datos
-
-1. Criterios iniciales -> normalizacion.
-2. Seleccion y evaluacion de zonas.
-3. Integracion de senales externas por zona.
-4. Busqueda de propiedades por zonas viables.
-5. Filtrado por restricciones activas.
-6. Scoring de alternativas.
-7. Decision: aceptar o iterar con relajacion.
-8. Explicacion final de recomendaciones.
+El sistema registra decisiones en `decision_history`, acciones por agente en `agent_traces` y modificaciones de criterios en `relaxation_log`. Esto permite explicar por que se acepto una recomendacion o por que fue necesario relajar condiciones.

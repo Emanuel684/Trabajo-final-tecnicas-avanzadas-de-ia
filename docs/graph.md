@@ -1,33 +1,28 @@
-# Diagrama del grafo propuesto
+# Grafo de decision
 
 ```mermaid
 flowchart TD
-    startNode[Start] --> interpretRequirements
-    interpretRequirements --> identifyZones
-    identifyZones --> evaluateZones
-    evaluateZones --> injectExternalSignals
-    injectExternalSignals --> searchProperties
-    searchProperties --> filterConstraints
-    filterConstraints --> scoreAlternatives
-    scoreAlternatives --> checkSufficiency
-
-    checkSufficiency -->|"sufficient=true"| finalEvaluator
-    checkSufficiency -->|"sufficient=false"| diagnoseFailure
-
-    diagnoseFailure --> relaxConstraints
-    relaxConstraints -->|"iterationCount < maxIterations"| identifyZones
-    relaxConstraints -->|"iterationCount >= maxIterations"| finalEvaluator
-
-    finalEvaluator -->|"acceptable=true"| explainOutput
-    finalEvaluator -->|"acceptable=false and iterationCount < maxIterations"| relaxConstraints
-    finalEvaluator -->|"acceptable=false and iterationCount >= maxIterations"| explainOutput
-
-    explainOutput --> endNode[End]
+    startNode["Inicio"] --> parseRequirements["Agente: interpretar requisitos"]
+    parseRequirements --> zoneSearch["Agente: identificar zonas"]
+    zoneSearch --> zoneEvaluation["Evaluar zonas"]
+    zoneEvaluation --> signalAgent["Agente: incorporar señales externas"]
+    signalAgent --> propertyAgent["Agente: buscar propiedades"]
+    propertyAgent --> filterNode["Filtrar restricciones"]
+    filterNode --> scoreNode["Puntuar alternativas"]
+    scoreNode --> sufficiencyCheck["Validar suficiencia"]
+    sufficiencyCheck -->|"suficiente"| finalEvaluator["Agente evaluador final"]
+    sufficiencyCheck -->|"insuficiente"| failureDiagnosis["Diagnosticar fallo"]
+    failureDiagnosis --> relaxNode["Relajar una restriccion"]
+    relaxNode -->|"hay iteraciones"| zoneSearch
+    relaxNode -->|"limite alcanzado"| finalEvaluator
+    finalEvaluator -->|"aprobado o rechazado"| explainNode["Explicar salida"]
+    finalEvaluator -->|"reintentar"| relaxNode
+    explainNode --> endNode["Fin"]
 ```
 
-## Logica de transiciones
+## Transiciones
 
-- `check_sufficiency`: valida si existe el minimo de alternativas elegibles.
-- `diagnose_failure`: identifica la causa principal cuando no hay suficiencia.
-- `relax_constraints`: modifica una sola variable principal por iteracion.
-- `final_evaluator`: aprueba o pide otra iteracion segun cantidad y calidad de resultados.
+- `check_sufficiency` envia a evaluacion final si hay suficientes alternativas o si ya se alcanzo el limite de iteraciones.
+- `diagnose_failure` explica por que no hay resultados adecuados antes de relajar criterios.
+- `relax_constraints` modifica una sola variable por iteracion.
+- `final_evaluator` aprueba, rechaza o solicita otra relajacion.
